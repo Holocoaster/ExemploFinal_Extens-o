@@ -1,5 +1,8 @@
+from model.Person import Person 
+
+
 class PersonDAO:
-  conexao = None
+  connection = None
   cursor = None
 
   def __init__(self, con, cur):
@@ -11,13 +14,13 @@ class PersonDAO:
 
     try:
       self.cursor.execute(sql)
-      resultado = self.cursor.fetchall()
+      result = self.cursor.fetchall()
 
       pessoas = []
-      for linha in resultado:
-        pess = Person(linha[0], linha[1])
+      for line in result:
+        person = Person(line[0], line[1])
         people.append(person)
 
-      return pessoas
+      return people
     except Exception as e:
       return e
